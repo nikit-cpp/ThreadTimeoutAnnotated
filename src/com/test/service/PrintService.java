@@ -3,7 +3,7 @@ package com.test.service;
 import java.util.concurrent.TimeUnit;
 
 import com.test.annotation.Timeout;
-import com.test.annotation.processor.TestingProxy;
+import com.test.annotation.processor.TimeoutProxy;
 
 public class PrintService implements Observable {
 	private static Observable instance;
@@ -14,7 +14,7 @@ public class PrintService implements Observable {
 
 	public static Observable getInstance() {
 		if (instance == null) {
-			instance = (Observable) TestingProxy.getNewProxy(
+			instance = (Observable) TimeoutProxy.getNewProxy(
 					new PrintService(), Observable.class); // собственно на этой строчке инстанцируется экземпляр.
 		}
 		return instance;
