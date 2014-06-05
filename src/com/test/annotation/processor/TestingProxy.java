@@ -6,9 +6,9 @@ public class TestingProxy {
 
 	public static Object getNewProxy(Object proxied, Class<?> interfaze) {
 		Object proxy = Proxy.newProxyInstance(
-				TestingInvocationHandler.class.getClassLoader(),
+				TimeoutInvocationHandler.class.getClassLoader(),
 				new Class[] { interfaze },
-				new TestingInvocationHandler(proxied));
+				new TimeoutInvocationHandler(proxied));
 		return proxy;
 	}
 

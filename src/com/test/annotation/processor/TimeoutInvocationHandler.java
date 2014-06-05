@@ -8,13 +8,12 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import com.test.annotation.Timeout;
 
-import com.test.annotation.Testing;
-
-public class TestingInvocationHandler implements InvocationHandler {
+public class TimeoutInvocationHandler implements InvocationHandler {
 	private Object proxied;
 
-	public TestingInvocationHandler(Object proxied) {
+	public TimeoutInvocationHandler(Object proxied) {
 		this.proxied = proxied;
 	}
 
@@ -24,7 +23,7 @@ public class TestingInvocationHandler implements InvocationHandler {
 		Method m = proxied.getClass().getMethod(method.getName(),
 				method.getParameterTypes());
 		Object ret = null;
-		if (m.isAnnotationPresent(Testing.class)) {
+		if (m.isAnnotationPresent(Timeout.class)) {
 			System.out.println("\tIn the annotation processor");
 			ExecutorService executor = Executors.newSingleThreadExecutor();
 			Future<Object> future = executor.submit(new Callable<Object>() {
@@ -36,8 +35,9 @@ public class TestingInvocationHandler implements InvocationHandler {
 
 			try {
 				System.out.println("Started..");
-				long timeout2 = m.getAnnotation(Testing.class).timeout();
-				ret = future.get(timeout2, TimeUnit.SECONDS);
+				long timeout2 = m.getAnnotation(Timeout.class).value();
+				TimeUnit units2 = m.getAnnotation(Timeout.class).units();
+				ret = future.get(timeout2, units2);
 				System.out.println("Successfully finished!");
 			} catch (TimeoutException e) {
 				System.out.println("caused TimeoutException, terminated!");

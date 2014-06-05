@@ -1,6 +1,8 @@
 package com.test.service;
 
-import com.test.annotation.Testing;
+import java.util.concurrent.TimeUnit;
+
+import com.test.annotation.Timeout;
 import com.test.annotation.processor.TestingProxy;
 
 public class PrintService implements Observable {
@@ -18,12 +20,12 @@ public class PrintService implements Observable {
 		return instance;
 	}
 
-	@Testing(timeout=3)
+	@Timeout(3)
 	public void print1() {
 		System.out.println("1 - Text in annotated method");
 		System.out.println("print1: before sleep");
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(10000);
 		} catch (InterruptedException e) {
 			//e.printStackTrace();
 		}
@@ -31,7 +33,7 @@ public class PrintService implements Observable {
 
 	}
 	
-	@Testing(timeout=3)
+	@Timeout(value=3000, units=TimeUnit.MILLISECONDS)
 	public int print10() {
 		System.out.println("print10: before sleep");
 		try {
