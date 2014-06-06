@@ -1,7 +1,7 @@
-package com.test;
+package timeout;
 
-import com.test.service.Observable;
-import com.test.service.PrintService;
+import timeout.service.Observable;
+import timeout.service.PrintService;
 
 public class Application {
 	public static void main(String[] args) {

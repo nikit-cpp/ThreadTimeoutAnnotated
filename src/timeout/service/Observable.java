@@ -1,4 +1,4 @@
-package com.test.service;
+package timeout.service;
 
 public interface Observable {
 	void print1();

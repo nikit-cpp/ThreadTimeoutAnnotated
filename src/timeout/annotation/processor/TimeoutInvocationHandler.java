@@ -1,4 +1,4 @@
-package com.test.annotation.processor;
+package timeout.annotation.processor;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -8,7 +8,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
-import com.test.annotation.Timeout;
+
+import timeout.annotation.Timeout;
 
 public class TimeoutInvocationHandler implements InvocationHandler {
 	private Object proxied;

@@ -1,9 +1,9 @@
-package com.test.service;
+package timeout.service;
 
 import java.util.concurrent.TimeUnit;
 
-import com.test.annotation.Timeout;
-import com.test.annotation.processor.TimeoutProxy;
+import timeout.annotation.Timeout;
+import timeout.annotation.processor.TimeoutProxy;
 
 public class PrintService implements Observable {
 	private static Observable instance;

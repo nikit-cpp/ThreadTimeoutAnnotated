@@ -6,4 +6,4 @@
  * @author Ник
  *
  */
-package com.test;
+package timeout;

@@ -1,4 +1,4 @@
-package com.test.annotation.processor;
+package timeout.annotation.processor;
 
 import java.lang.reflect.Proxy;
 
