@@ -9,6 +9,11 @@ public class Application {
 		printService.print1();
 		printService.print2();
 		
-		System.out.println(printService.print10());
+		try{
+			System.out.println(printService.print10());
+		}catch(NullPointerException e){
+			System.err.println("null pointer exc");
+		}
+		System.out.println("normal working :)");
 	}
 }
